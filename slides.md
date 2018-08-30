@@ -128,7 +128,8 @@ Fearless concurrency
 `Mutex<T>`
 
 
-GStreamer
+![](gstreamer-logo.svg)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 
 Multimedia
