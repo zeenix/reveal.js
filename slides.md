@@ -31,7 +31,8 @@ Rust + GStreamer
 Inspired by Sebastian Dröge's talk
 
 
-Rust
+![](rust-logo.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 
 Systems programming
