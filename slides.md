@@ -136,9 +136,12 @@ Fearless concurrency
 Multimedia
 
 
-Pipelines (LEGO)
+Elements & Pipelines<br/>
+![](linked-elements.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
 
-Insert pic here
+
+Note: Like LEGO
 
 
 Plugins
