@@ -93,6 +93,9 @@ Note: basic types are Copy types
 
 
 You can borrow
+<br/>
+(Pass by reference in C++)
+<br/>
 
 ```
 let s1 = String::from("hello");
@@ -100,9 +103,6 @@ let s2 = &s1;
 
 println!("{}, world!", s1);
 ```
-<br/>
-Pass by reference in C++
-<br/>
 
 
 But borrows are temporary
@@ -173,9 +173,15 @@ Note: FLV example
 Multithreading is hard!
 
 
-Mutability & ownership maps well
+Mutability & ownership map well
+<br/>
+<br/>
+For example..
 
-Note: GstMiniObject writable on refcount 1
+
+GstMiniObject
+
+Read-only on refcount > 1
 
 
 Avoid memory errors
@@ -184,8 +190,9 @@ Note: A whole class of them
 
 
 C an archaic language
-
-Note: not only very unsafe
+<br/>
+<br/>
+Apart from being very unsafe
 
 
 `GStreamer Rust bindings`
