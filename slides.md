@@ -143,6 +143,11 @@ Elements & Pipelines<br/>
 Note: Like LEGO, mention pads & caps
 
 
+An example pipeline<br/>
+![](simple-player.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
 Plugin-based
 
 
