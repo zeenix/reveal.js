@@ -207,6 +207,68 @@ Apart from being very unsafe
 - https://github.com/sdroege/gst-plugin-rs
 
 
+A simple example
+
+```
+// caps is a gst::caps::Caps
+let s = caps.get_structure(0);
+caps.remove_structure(0);
+s.set("foo", &bar);
+```
+
+
+![](option-error.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+Let's handle Option
+
+```
+if let Some(s) = caps.get_structure(0) {
+    caps.remove_structure(0);
+    s.set("foo", &bar);
+};
+```
+
+
+![](mutability-error.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+Let's solve mutability issue
+
+```
+    if let Some(c) = caps.get_mut() {
+        if let Some(s) = c.get_mut_structure(0) {
+            c.remove_structure(0);
+            s.set("foo", &bar);
+        };
+    };
+
+```
+
+
+![](mult-mutability-error.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+Now the simultaneous mutability
+
+```
+    if let Some(c) = caps.get_mut() {
+        if let Some(s) = c.get_mut_structure(0) {
+            s.set("foo", &bar);
+        };
+        c.remove_structure(0);
+    };
+
+```
+
+
+![](no-error.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
 On a closing note...
 
 
