@@ -195,7 +195,7 @@ Avoid memory errors
 Note: A whole class of them
 
 
-C an archaic language
+C is an archaic language
 <br/>
 <br/>
 Apart from being very unsafe
