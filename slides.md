@@ -140,7 +140,7 @@ Elements & Pipelines<br/>
 ![](linked-elements.png)
 <!-- .element style="border: 0; background: None; box-shadow: None" -->
 
-Note: Like LEGO
+Note: Like LEGO, mention pads & caps
 
 
 Plugins
