@@ -19,7 +19,7 @@ Collabora
 FOSS
 
 
-Flying & cats
+🛫  🚁  🐈
 
 
 What am I talking about?
