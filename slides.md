@@ -143,7 +143,7 @@ Elements & Pipelines<br/>
 Note: Like LEGO, mention pads & caps
 
 
-Plugins
+Plugin-based
 
 
 Written in C
