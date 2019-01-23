@@ -1,7 +1,7 @@
 ## `Fearless Multimedia Programming`
 
 <br/><br/>
-zeenix@collabora.com
+zeeshanak@gnome.org
 
 
 Who am I?
@@ -10,10 +10,8 @@ Who am I?
 Zeeshan Ali
 
 
-![](collabora.png)
+![](redhat.png)
 <!-- .element style="border: 0; background: None; box-shadow: None" -->
-
-Collabora
 
 
 FOSS
