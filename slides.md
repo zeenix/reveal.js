@@ -90,6 +90,16 @@ println!("{}, world!", s1);
 Note: basic types are Copy types
 
 
+Same with functions
+<br/>
+```
+let s1 = String::from("hello");
+some_function(s1);
+
+println!("{}, world!", s1);
+```
+
+
 You can borrow
 <br/>
 (Pass by reference in C++)
