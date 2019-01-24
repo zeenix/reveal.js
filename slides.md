@@ -29,6 +29,9 @@ Rust + GStreamer
 Inspired by Sebastian Dröge's talk
 
 
+A lot to cover
+
+
 ![](rust-logo.png)
 <!-- .element style="border: 0; background: None; box-shadow: None" -->
 
