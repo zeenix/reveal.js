@@ -81,7 +81,6 @@ in other languages
 
 
 Only one owner
-
 <br/>
 ```
 let s1 = String::from("hello");
@@ -121,7 +120,6 @@ But borrows are temporary
 
 
 `Rc<T>`
-
 <br/>
 ```
 let s1 = Rc::new(String::from("hello"));
