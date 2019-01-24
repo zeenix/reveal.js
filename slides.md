@@ -89,8 +89,6 @@ let s2 = s1;
 println!("{}, world!", s1);
 ```
 
-Note: basic types are Copy types
-
 
 Same with functions
 <br/>
@@ -100,6 +98,9 @@ some_function(s1);
 
 println!("{}, world!", s1);
 ```
+
+
+Copy types
 
 
 You can borrow
