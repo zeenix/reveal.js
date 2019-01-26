@@ -229,7 +229,7 @@ s.set("foo", &bar);
 
 
 ![](option-error.png)
-<!-- .element style="border: 0; background: None; box-shadow: None" -->
+<!-- .element style="border: 0; background: None; box-shadow: None;" class="stretch" -->
 
 
 Let's handle Option
@@ -277,7 +277,7 @@ Now the simultaneous mutability
 
 
 ![](no-error.png)
-<!-- .element style="border: 0; background: None; box-shadow: None" -->
+<!-- .element style="border: 0; background: None; box-shadow: None" class="stretch" -->
 
 
 On a closing note...
