@@ -267,10 +267,10 @@ Now the simultaneous mutability
 
 ```
     if let Some(c) = caps.get_mut() {
+        c.remove_structure(0);
         if let Some(s) = c.get_mut_structure(0) {
             s.set("foo", &bar);
         };
-        c.remove_structure(0);
     };
 
 ```
