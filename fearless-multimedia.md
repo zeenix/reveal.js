@@ -1,5 +1,7 @@
 ## `Fearless Multimedia Programming`
 
+using GStreamer & Rust
+
 <br/><br/>
 zeeshanak@gnome.org
 
