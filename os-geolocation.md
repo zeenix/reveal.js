@@ -29,8 +29,12 @@ Our story starts in 2007
 Finnish Conspiracy
 
 
-<image src="bergie.png" style="border: 0; background: None; box-shadow: None" align="left" height="95"> Henri Bergius<br>
-<image src="tigert.png" style="border: 0; background: None; box-shadow: None" align="left"> Tuomas Kuosmanen
+<image src="bergie.jpg" style="border: 0; background: None; box-shadow: None"><br/>
+Henri Bergius
+
+
+<image src="tigert.jpg" style="border: 0; background: None; box-shadow: None"><br/>
+Tuomas Kuosmanen
 
 
 Geolocation D-Bus service
@@ -39,9 +43,8 @@ Geolocation D-Bus service
 Geoclue was born
 
 
-jku image
-![](hadess.png)
-<!-- .element style="border: 0; background: None; box-shadow: None" --> Bastien Nocera
+<image src="jku.jpg" style="border: 0; background: None; box-shadow: None; width: 50%"><br/>
+Jussi Kukkonen
 
 
 External providers
@@ -65,8 +68,8 @@ Until 2013
 When I was bored
 
 
-![](hadess.png) 
-<!-- .element style="border: 0; background: None; box-shadow: None" --> Bastien Nocera
+<image src="hadess.jpg" style="border: 0; background: None; box-shadow: None; width: 70%"><br/>
+Bastien Nocera
 
 
 Geoclue2 was born
