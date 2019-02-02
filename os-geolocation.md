@@ -56,7 +56,7 @@ Gypsy
 Why not GPSD?
 
 
-Conservation Architecture
+Conservative Architecture
 
 
 Archaic IPC
