@@ -175,6 +175,18 @@ Gitlab
 Flatpak
 
 
+Challenges ahead
+
+
+Mozilla Location Service
+
+
+Rust
+
+
+More Developers
+
+
 That's all folks
 
 <br/>
