@@ -45,9 +45,6 @@ Systems programming
 - Efficiency
 
 
-Zero-cost abstractions
-
-
 No raw pointers
 
 <br/>
