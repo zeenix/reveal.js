@@ -50,6 +50,15 @@ Jussi Kukkonen
 External providers
 
 
+GeoIP
+
+
+WiFi
+
+<br/>
+.. well not really
+
+
 Gypsy
 
 
@@ -60,15 +69,6 @@ Conservative Architecture
 
 
 Archaic IPC
-
-
-GeoIP
-
-
-WiFi
-
-<br/>
-.. well not really
 
 
 Garmin & Maemo devices
