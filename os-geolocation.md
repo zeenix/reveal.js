@@ -131,15 +131,15 @@ Yahoo
 Mozilla
 
 <br/>
-* Open
-* Huge amount of data
+- Open
+- Huge amount of data
 
 
 geoclue-share
 
 <br/>
-* NMEA-over-TCP
-* Avahi
+- NMEA-over-TCP
+- Avahi
 
 
 GPS devices
