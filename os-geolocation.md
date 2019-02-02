@@ -99,6 +99,9 @@ For example..
 Internal Sources
 
 
+geocode-glib
+
+
 Privacy
 
 
@@ -107,9 +110,6 @@ App-auth Agent
 <br/>
 - GNOME
 - Elementary OS
-
-
-geocode-glib
 
 
 GNOME integration
