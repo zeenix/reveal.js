@@ -104,6 +104,10 @@ Privacy
 
 App-auth Agent
 
+<br/>
+- GNOME
+- Elementary OS
+
 
 geocode-glib
 
@@ -128,8 +132,9 @@ GeoIP
 
 Modems
 
-* Cell towers
-* GPS
+<br/>
+- Cell towers
+- GPS
 
 
 WiFi-geolocation
@@ -140,12 +145,14 @@ Yahoo
 
 Mozilla
 
+<br/>
 * Open
 * Huge amount of data
 
 
 geoclue-share
 
+<br/>
 * NMEA-over-TCP
 * Avahi
 
