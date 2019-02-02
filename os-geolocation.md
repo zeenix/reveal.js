@@ -112,21 +112,6 @@ App-auth Agent
 - Elementary OS
 
 
-GNOME integration
-
-
-Maps
-
-
-Auto Timezone Update
-
-
-Clocks & Weather
-
-
-Webkit-gtk
-
-
 GeoIP
 
 
@@ -164,6 +149,21 @@ gypsy unmaintained for years
 
 
 gps-share
+
+
+GNOME integration
+
+
+Maps
+
+
+Auto Timezone Update
+
+
+Clocks & Weather
+
+
+Webkit-gtk
 
 
 That's all folks
