@@ -189,14 +189,6 @@ Multithreading is hard!
 
 
 Mutability & ownership map well
-<br/>
-<br/>
-For example..
-
-
-GstMiniObject
-
-Read-only on refcount > 1
 
 
 Avoid memory errors
