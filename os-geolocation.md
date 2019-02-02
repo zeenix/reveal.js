@@ -90,7 +90,13 @@ Bastien Nocera
 Geoclue2 was born
 
 
-Unified sources = simpler architecture
+Simpler Architecture
+
+
+For example..
+
+
+Internal Sources
 
 
 Privacy
