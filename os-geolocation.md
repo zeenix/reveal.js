@@ -118,7 +118,7 @@ GNOME integration
 Maps
 
 
-Automatic timezone update
+Auto Timezone Update
 
 
 Clocks & Weather
