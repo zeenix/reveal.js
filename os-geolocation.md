@@ -56,6 +56,12 @@ Gypsy
 Why not GPSD?
 
 
+Conservation Architecture
+
+
+Archaic IPC
+
+
 Garmin & Maemo devices
 
 
