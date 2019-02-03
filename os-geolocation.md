@@ -190,4 +190,5 @@ More Developers
 That's all folks
 
 <br/>
-https://git.io/fhSGm
+<br/>
+Slides: https://git.io/fhSGm
