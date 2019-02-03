@@ -145,7 +145,7 @@ geoclue-share
 - Avahi
 
 
-GPS devices
+Standalone GPS devices
 
 
 gypsy unmaintained for years
