@@ -135,6 +135,9 @@ Mozilla
 - Huge amount of data
 
 
+What about desktop machines?
+
+
 geoclue-share
 
 <br/>
