@@ -190,10 +190,10 @@ Challenges Ahead
 Mozilla Location Service
 
 
-Rust
-
-
 More Developers
+
+
+Rust
 
 
 That's all folks
