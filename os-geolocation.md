@@ -153,6 +153,8 @@ gypsy unmaintained for years
 
 gps-share
 
+Note: Rust
+
 
 GNOME integration
 
