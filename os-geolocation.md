@@ -179,6 +179,10 @@ Gitlab
 
 Flatpak
 
+<br/>
+- Bundling
+- Sandboxing
+
 
 Challenges ahead
 
