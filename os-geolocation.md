@@ -184,7 +184,7 @@ Flatpak
 - Sandboxing
 
 
-Challenges ahead
+Challenges Ahead
 
 
 Mozilla Location Service
