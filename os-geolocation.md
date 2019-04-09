@@ -191,7 +191,7 @@ Flatpak
 - Sandboxing
 
 
-App auth for
+App authorization
 
 - System apps <span style="color:red">X</span><br/>
 - Sandboxed apps <span style="color:green">✔</span>
