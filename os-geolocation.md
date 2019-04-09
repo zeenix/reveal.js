@@ -193,7 +193,7 @@ Mozilla Location Service
 More Platforms
 
 
-More Developers
+More Contributors
 
 
 Rust
