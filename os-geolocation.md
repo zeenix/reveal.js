@@ -174,7 +174,7 @@ Webkit-gtk
 More Recently
 
 
-Gitlab
+Bugzilla -> Gitlab
 
 
 Flatpak
