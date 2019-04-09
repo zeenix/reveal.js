@@ -112,17 +112,24 @@ App-auth Agent
 - Elementary OS
 
 
+Sources
+
+
+Easy ones first
+
+
 GeoIP
 
-
-Modems
-
-<br/>
-- Cell towers
-- GPS
+Note: VPN
 
 
-WiFi-geolocation
+GPS-enabled modems
+
+
+Then the challenging ones
+
+
+WiFi & Cellular-based geolocation
 
 
 Yahoo
