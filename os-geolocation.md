@@ -184,6 +184,13 @@ Flatpak
 - Sandboxing
 
 
+App auth for
+
+- System apps <span style="color:red">x</span>
+<br/>
+- Sandboxed apps <span style="color:green">✔</span>
+
+
 Challenges Ahead
 
 
