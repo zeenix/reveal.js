@@ -186,7 +186,7 @@ Flatpak
 
 App auth for
 
-- System apps <span style="color:red">x</span>
+- System apps <span style="color:red">X</span>
 <br/>
 - Sandboxed apps <span style="color:green">✔</span>
 
