@@ -1,4 +1,4 @@
-## `Oxididing Geoclue`
+## `Oxidising Geoclue`
 
 <br/><br/>
 In which the protagonist takes an unexpected turn
