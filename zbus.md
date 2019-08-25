@@ -209,6 +209,27 @@ trait VariantType<'a>: Sized {
 ```
 
 
+Back to D-Bus
+
+
+```rust
+let mut conection = Connection::new_session().unwrap();
+let reply = connection
+    .call_method(
+        Some("org.freedesktop.DBus"),
+        "/org/freedesktop/DBus",
+        Some("org.freedesktop.DBus.Peer"),
+        "GetMachineId",
+        None,
+    )
+    .unwrap();
+let body = reply.body(Some(<&str>::SIGNATURE_STR)).unwrap();
+let v = body.get(0).unwrap();
+let id = v.get::<&str>().unwrap();
+println!("Machine ID: {}", id);
+```
+
+
 Easy parts left
 
 
