@@ -161,8 +161,31 @@ u8, i16, f64, str, etc
 
 Container types
 
+
+Arrays
+
 <br/>
-Structure & Array
+```rust
+impl<T: VariantType> VariantType for Vec<T> {
+...
+```
+
+
+Structures
+
+<br/>
+```rust
+pub struct Structure(Vec<Variant>);
+
+impl Structure {
+    pub fn new(fields: Vec<Variant>) -> Self;
+    pub fn fields(&self) -> &[Variant];
+    pub fn take_fields(self) -> Vec<Variant>;
+}
+
+impl VariantType for Structure {
+...
+```
 
 
 ```rust
