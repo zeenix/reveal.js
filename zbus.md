@@ -141,14 +141,15 @@ trait VariantType: Sized {
     const ALIGNMENT: u32;
 
     fn encode(&self) -> Vec<u8>;
+
     fn extract_slice(data: &[u8], signature: &str)
         -> Result<&[u8], VariantError>;
     fn decode(bytes: &[u8], signature: &str)
         -> Result<Self, VariantError>;
+
     fn signature(&self) -> Cow<str> {
         Cow::from(Self::SIGNATURE_STR)
     }
-}
 ```
 
 
@@ -173,14 +174,18 @@ struct Variant {
 
 
 ```rust
-let v = crate::Variant::from(i16::max_value());
+let i: i16 = 42;
+let v = crate::Variant::from(i);
 assert!(v.len() == 2);
-assert!(v.get::<i16>().unwrap() == i16::max_value());
 assert!(v.is::<i16>());
+assert!(v.get::<i16>().unwrap() == i);
 
-let v = crate::Variant::from_data(v.bytes(), v.signature()).unwrap();
+let v = crate::Variant::from_data(
+    v.bytes(),
+    v.signature()
+).unwrap();
 assert!(v.len() == 2);
-assert!(v.get::<i16>().unwrap() == i16::max_value());
+assert!(v.get::<i16>().unwrap() == i);
 ```
 
 
@@ -192,14 +197,15 @@ trait VariantType<'a>: Sized {
     const ALIGNMENT: u32;
 
     fn encode(&self) -> Vec<u8>;
+
     fn extract_slice<'b>(data: &'b [u8], signature: &str)
         -> Result<&'b [u8], VariantError>;
     fn decode(bytes: &'a [u8], signature: &str)
         -> Result<Self, VariantError>;
+
     fn signature<'b>(&'b self) -> Cow<'b, str> {
         Cow::from(Self::SIGNATURE_STR)
     }
-}
 ```
 
 
