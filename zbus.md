@@ -145,7 +145,7 @@ trait VariantType: Sized {
         -> Result<&[u8], VariantError>;
     fn decode(bytes: &[u8], signature: &str)
         -> Result<Self, VariantError>;
-    fn signature<'b>(&self) -> Cow<str> {
+    fn signature(&self) -> Cow<str> {
         Cow::from(Self::SIGNATURE_STR)
     }
 }
