@@ -255,6 +255,38 @@ println!("Machine ID: {}", id);
 ```
 
 
+All done with Variants, right? RIGHT??
+
+
+Wait! Why the new test cases fail?
+
+
+![](pls-no.jpg)
+
+
+Variant alignment is all wrong
+
+🤦 😭
+
+Note: Turns out D-Bus is hard after all!
+
+
+D-Bus has some strange rules
+
+
+1. Variant's & contained value needs no alignment
+
+
+But its grand-chilren do
+
+😯
+
+
+2. Alignment based on position in the whole message
+
+😠
+
+
 Separate Variant crate
 
 
