@@ -255,9 +255,6 @@ println!("Machine ID: {}", id);
 ```
 
 
-Easy parts left
-
-
 Separate Variant crate
 
 
