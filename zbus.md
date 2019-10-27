@@ -192,6 +192,7 @@ impl VariantType for Structure {
 ```rust
 struct Variant {
     signature: String,
+    // The actual value in encoded format
     value: Cow<[u8]>,
 }
 ```
