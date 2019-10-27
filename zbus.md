@@ -103,7 +103,10 @@ Multiple async APIs
 No CI
 
 
-Conbributed
+Still decided to use
+
+
+Even contributed
 
 
 Rust GNOME Hackfest
