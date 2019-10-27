@@ -109,7 +109,7 @@ Still decided to use
 Even contributed
 
 
-Rust GNOME Hackfest
+Rust GNOME Hackfest, May 2019
 
 
 dbus-rs API over-complicated
