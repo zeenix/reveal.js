@@ -47,45 +47,13 @@ Crash reports
 Most sensitive data
 
 
-gps-share
-
-
 I <span style="color:red">❤️ </span> Rust
-
-
-Only service code
 
 
 Challenges
 
 
 Meson
-
-
-Maintainer wants a proper solution
-
-
-Rust devs focused on web
-
-
-custom_target()
-
-
-```
-cargo_script = find_program('cargo.py')
-find = find_program('find')
-c = run_command(find, 'src', '-name', '*.rs')
-sources = c.stdout().strip().split('\n')
-custom_target(
-    'cargo-build',
-    input: sources,
-    output: [ 'geoclue' ],
-    command: [
-        cargo_script,
-        ...
-    ],
-)
-```
 
 
 D-Bus
