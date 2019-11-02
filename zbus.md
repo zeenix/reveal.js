@@ -98,6 +98,50 @@ D-Bus crate from scratch?? 😯
 How hard can it be? 😂
 
 
+What's involved?
+
+
+Low-level
+
+
+Message passing
+
+
+Wire format
+
+
+Data types & encoding
+
+
+Natural alignment
+
+
+Basic types
+
+<br/>
+u8, i16, f64, str, etc
+
+
+Containers
+
+
+Array, Structure, Dict
+
+
+& Variant
+
+Note: Generic data
+
+
+High-level
+
+
+Objects & interfaces
+
+
+Methods & signals
+
+
 Actually..really not too hard
 
 Note: assumptions
