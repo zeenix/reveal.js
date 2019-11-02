@@ -278,6 +278,8 @@ println!("Machine ID: {}", id);
 
 All done with Variants, right? RIGHT??
 
+Note: docs and ship
+
 
 Wait! Why the new test cases fail?
 
