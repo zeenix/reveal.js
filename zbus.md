@@ -62,6 +62,12 @@ Meson
 D-Bus
 
 
+Effecient binary IPC protocol
+
+
+Desktop & embedded
+
+
 dbus-rs
 
 
