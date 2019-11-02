@@ -310,6 +310,17 @@ But its grand-chilren do
 😠
 
 
+```rust
+trait VariantType {
+    ...
+
+    fn encode(&self) -> Vec<u8>;
+
+    ...
+}
+```
+
+
 Separate Variant crate
 
 
