@@ -38,7 +38,10 @@ Written in C
 Maintainer since Geoclue2
 
 
-Why Rust?
+Let's oxidize it!
+
+
+But why?
 
 
 Crash reports
