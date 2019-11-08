@@ -145,10 +145,49 @@ Note: Generic data
 High-level
 
 
-Objects & interfaces
+Objects
+
+```
+/org/freedesktop/GeoClue2/Manager
+/org/freedesktop/GeoClue2/Client
+/org/freedesktop/GeoClue2/Location
+...
+```
 
 
-Methods & signals
+Interfaces
+
+```
+org.freedesktop.GeoClue2.Manager
+org.freedesktop.GeoClue2.Client
+org.freedesktop.GeoClue2.Location
+...
+```
+
+
+Methods
+
+```
+org.freedesktop.GeoClue2.Manager.GetClient(OUT o client)
+org.freedesktop.GeoClue2.Client.Start()
+org.freedesktop.GeoClue2.Client.Stop()
+```
+
+
+Signals
+
+```
+org.freedesktop.GeoClue2.Client.LocationUpdated(o old, o new)
+```
+
+
+Properties
+
+```
+org.freedesktop.GeoClue2.Location.Latitude
+org.freedesktop.GeoClue2.Location.Longitude
+org.freedesktop.GeoClue2.Location.Altitude
+```
 
 
 Actually..really not too hard
