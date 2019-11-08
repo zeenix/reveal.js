@@ -71,13 +71,12 @@ Desktop & embedded
 dbus-rs
 
 
-Depends on libdbus
+libdbus
 
 
-Multiple async APIs
+Issues
 
-
-No CI
+Note: Multiple async APIs, no CI etc
 
 
 Still decided to use
