@@ -376,6 +376,20 @@ trait VariantType {
 😠
 
 
+1-month later..
+
+
+Still haven't solved the problem
+
+
+Lifetimes must die!
+
+
+Efficiency is not a religion
+
+Note: No need to be more efficient than C
+
+
 Looking forward
 
 
