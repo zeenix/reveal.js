@@ -109,6 +109,10 @@ Message passing
 Wire format
 
 
+<br/>
+aka GVariant
+
+
 Data types & encoding
 
 
