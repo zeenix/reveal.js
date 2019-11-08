@@ -376,6 +376,9 @@ trait VariantType {
 😠
 
 
+Looking forward
+
+
 Separate Variant crate
 
 
