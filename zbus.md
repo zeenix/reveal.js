@@ -352,17 +352,7 @@ Note: Turns out D-Bus is hard after all!
 D-Bus has a few strange rules
 
 
-1. Variant's & contained value needs no alignment
-
-
-But its grand-chilren do
-
-😯
-
-
-2. Alignment based on position in the whole message
-
-😠
+#1 Alignment based on position in the whole message
 
 
 ```rust
@@ -374,6 +364,16 @@ trait VariantType {
     ...
 }
 ```
+
+
+#2 Variant's & contained value needs no alignment
+
+😯
+
+
+#3 But its grand-chilren do
+
+😠
 
 
 Separate Variant crate
