@@ -276,12 +276,12 @@ struct Variant {
 
 ```rust
 let i: i16 = 42;
-let v = crate::Variant::from(i);
+let v = zbus::Variant::from(i);
 assert!(v.len() == 2);
 assert!(v.is::<i16>());
 assert!(v.get::<i16>().unwrap() == i);
 
-let v = crate::Variant::from_data(
+let v = zbus::Variant::from_data(
     v.bytes(),
     v.signature()
 ).unwrap();
@@ -314,7 +314,7 @@ Back to D-Bus
 
 
 ```rust
-let mut conection = Connection::new_session().unwrap();
+let mut conection = zbus::Connection::new_session().unwrap();
 let reply = connection
     .call_method(
         Some("org.freedesktop.DBus"),
