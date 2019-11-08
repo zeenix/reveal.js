@@ -195,13 +195,19 @@ Actually..really not too hard
 Note: assumptions
 
 
-zbus!
+After 3 days...
 
 
 Established a connection!
 
 
-Calling methods
+Called a method
+
+
+Cool, let's really do this!
+
+
+zbus!
 
 
 GVariant
