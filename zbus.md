@@ -387,6 +387,8 @@ Signals
 
 Async
 
+Note: async-std
+
 
 High-level API
 <br/>
