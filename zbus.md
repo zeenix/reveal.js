@@ -349,7 +349,7 @@ Variant alignment is all wrong
 Note: Turns out D-Bus is hard after all!
 
 
-D-Bus has some strange rules
+D-Bus has a few strange rules
 
 
 1. Variant's & contained value needs no alignment
