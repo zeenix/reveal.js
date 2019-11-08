@@ -29,7 +29,7 @@ Background story
 Geoclue
 
 
-Geolocation D-Bus service
+Geolocation service
 
 
 Written in C
