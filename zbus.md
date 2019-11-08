@@ -227,6 +227,7 @@ trait VariantType: Sized {
 
     fn signature(&self) -> Cow<str>;
 ```
+Note: SIGNATURE & signature same for basic types
 
 
 Basic types
