@@ -150,7 +150,8 @@ Objects
 ```
 /org/freedesktop/GeoClue2/Manager
 /org/freedesktop/GeoClue2/Client
-/org/freedesktop/GeoClue2/Location
+/org/freedesktop/GeoClue2/Location/0
+/org/freedesktop/GeoClue2/Location/1
 ...
 ```
 
