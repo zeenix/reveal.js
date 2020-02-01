@@ -17,7 +17,7 @@ Zeeshan Ali
 <br/>
 <br/>
 <br/>
-🎶 Mun koti ei oo täälä 🎶
+🎶 Mun koti ei oo täällä 🎶
 
 
 ![](redhat.png)
