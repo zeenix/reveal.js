@@ -12,6 +12,13 @@ Who am I?
 
 Zeeshan Ali
 
+<br/>
+🇵🇰 ➡ 🇫🇮 ➡ 🇬🇧  ➡ 🇸🇪 ➡  🇩🇪
+<br/>
+<br/>
+<br/>
+🎶 Mun koti ei oo täälä 🎶
+
 
 ![](redhat.png)
 <!-- .element style="border: 0; background: None; box-shadow: None" -->
@@ -24,6 +31,9 @@ FOSS
 
 
 Background story
+
+<br/>
+Or recap for some
 
 
 Geoclue
@@ -100,48 +110,6 @@ How hard can it be? 😂
 What's involved?
 
 
-Low-level
-
-
-Message passing
-
-
-Wire format
-
-
-<br/>
-aka GVariant
-
-
-Data types & encoding
-
-
-Natural alignment
-
-
-Signature
-
-
-Basic types
-
-<br/>
-u8, i16, f64, str, etc
-
-
-Containers
-
-
-Array, Structure, Dict
-
-<br/>
-and..
-
-
-Variant
-
-Note: Generic data
-
-
 High-level
 
 
@@ -191,6 +159,67 @@ org.freedesktop.GeoClue2.Location.Altitude
 ```
 
 
+Low-level
+
+
+Message passing 📨
+
+
+Wire format
+
+
+aka GVariant
+
+<br/>
+..well almost
+
+
+Used standalone as well
+
+<br/>
+OSTree, Flatpak, dconf
+
+
+Intro to the Wire format
+
+
+Data types & encoding
+
+
+Natural alignment
+
+
+Signature ✍
+
+
+Basic types
+
+<br/>
+u8, i16, f64, str, etc
+
+
+Containers
+
+
+Array, Structure, Dict
+
+<br/>
+and..
+
+
+Variant
+
+Note: Generic data
+
+
+![](dbus-str-repr.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+![](dbus-str-var-repr.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
 Actually..really not too hard
 
 Note: assumptions
@@ -211,109 +240,238 @@ Cool, let's really do this!
 zbus!
 
 
-GVariant
+But hardest part first
 
 
-```rust
-trait VariantType: Sized {
-    const SIGNATURE: char;
-    const ALIGNMENT: u32;
-
-    fn encode(&self) -> Vec<u8>;
-
-    fn extract_slice(data: &[u8], signature: &str)
-        -> Result<&[u8], VariantError>;
-    fn decode(bytes: &[u8], signature: &str)
-        -> Result<Self, VariantError>;
-
-    fn signature(&self) -> Cow<str>;
-```
-Note: SIGNATURE & signature same for basic types
+zvariant
 
 
-Basic types
+Good goal
 
 <br/>
-u8, i16, f64, str, etc
+Super efficient API
 
 
-Container types
-
-
-Arrays
+Silly goal
 
 <br/>
-```rust
-impl<T: VariantType> VariantType for Vec<T> {
-...
-```
+Super efficient from day 1
 
-
-Structures
-
-<br/>
-```rust
-pub struct Structure(Vec<Variant>);
-
-impl Structure {
-    pub fn new(fields: Vec<Variant>) -> Self;
-    pub fn fields(&self) -> &[Variant];
-    pub fn take_fields(self) -> Vec<Variant>;
-}
-
-impl VariantType for Structure {
-...
-```
-
-
-```rust
-struct Variant {
-    signature: String,
-    // The actual value in encoded format
-    value: Cow<[u8]>,
-}
-```
-
-
-```rust
-let i: i16 = 42;
-let v = zbus::Variant::from(i);
-assert!(v.len() == 2);
-assert!(v.is::<i16>());
-assert!(v.get::<i16>().unwrap() == i);
-
-let v = zbus::Variant::from_data(
-    v.bytes(),
-    v.signature()
-).unwrap();
-assert!(v.len() == 2);
-assert!(v.get::<i16>().unwrap() == i);
-```
-
-
-Fun with lifetimes
 
 ```rust
 trait VariantType<'a>: Sized {
     const SIGNATURE: char;
     const ALIGNMENT: u32;
 
-    fn encode(&self) -> Vec<u8>;
-
-    fn extract_slice<'b>(data: &'b [u8], signature: &str)
-        -> Result<&'b [u8], VariantError>;
     fn decode(bytes: &'a [u8], signature: &str)
         -> Result<Self, VariantError>;
+    fn encode(&self) -> Vec<u8>;
 
     fn signature<'b>(&'b self) -> Cow<'b, str> {
         Cow::from(Self::SIGNATURE_STR)
     }
 ```
+Note: SIGNATURE & signature same for basic types
+
+
+Lots of issues
+
+
+Loads of fun with lifetimes
+
+
+Variant representation was challenging
+
+
+But eventually..
+
+
+Started to look really good
+
+Note: docs and ship
+
+
+Wait! Why the new test cases fail?
+
+
+![](dbus-array-var-repr-wrong.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+Couldn't figure out for many days
+
+
+Back to D-Bus spec reading
+
+
+![](dbus-array-var-repr-wrong-padding.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+Complete overhaul needed
+
+
+Lifetimes made it very hard
+
+
+🗡 Kill all lifetimes!!! 🗡
+
+<br/>
+```rust
+// Immutable slice of an underlying byte buffer.
+pub struct SharedData {
+    data: Rc<Vec<u8>>,
+    position: usize,
+    end: usize,
+}
+```
+
+
+Efficiency is not a religion
+
+Note: No need to be more efficient than C
+
+
+Done after 2 more months
+
+
+All test cases now pass?
+
+
+Nope!!! 😭
+
+
+More spec reading & bytes staring
+
+
+![](dbus-array-var-repr-wrong-point.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+![](dbus-array-var-repr-correct.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+Trivial to fix
+
+
+🎄 holiday well spent
+
+
+zvariant published!
+
+![](zvariant-crate.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+```rust
+use zvariant::{Encode, EncodingFormat, SimpleDecode};
+
+// Encode a string
+let format = EncodingFormat::default();
+let encoding = "Hello world!".encode(format);
+assert!(encoding.len() == 17);
+
+// and the decode it from the encoded form
+let s = String::decode_simple(encoding, format).unwrap();
+assert!(s == "Hello world!");
+```
+
+
+```rust
+use zvariant::{Decode, Encode, EncodingFormat, Variant};
+
+// Create a Variant from an i16 and encode it
+let v = i16::max_value().to_variant();
+let format = EncodingFormat::default();
+let encoding = v.encode_value(format);
+
+// Decode it back
+let v = Variant::from_data(encoding, 'n', format).unwrap();
+assert_eq!(
+    i16::take_from_variant(v).unwrap(),
+    i16::max_value()
+);
+```
+
+
+But don't use it just yet!
+
+
+Back to efficiency
+
+Note: Fine for D-Bus 
+
+
+API breakage needed
+
+
+Serde
+
+![](zbus-issue1.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+
+Experimental branch
+
+
+Main challenge: Too generic
+
+
+PoC Serializer impl
+
+
+```rust
+pub fn to_bytes<T>(
+    value: &T,
+    format: EncodingFormat,
+) -> Result<Vec<u8>>
+where
+    // `VariantValue` trait provides the signature of `T`
+    T: Serialize + VariantValue;
+```
+
+
+What's the point then?
+
+
+even if derive macro provided
+
+<br/>
+```rust
+#[derive(Serialize, Deserialize, VariantValue)]
+pub struct YourType {
+...
+```
+
+
+So..
+
+
+`VariantValue` trait bound
+
+
+Deserializer next
+
+
+Configurable byte order
+
+
+GVariant
+
+
+& a few other goodies like..
+
+
+Large array handling
 
 
 Back to D-Bus
 
 
+You can already do:
+
+<br/>
 ```rust
 let mut conection = zbus::Connection::new_session().unwrap();
 let reply = connection
@@ -332,69 +490,7 @@ println!("Machine ID: {}", id);
 ```
 
 
-All done with Variants, right? RIGHT??
-
-Note: docs and ship
-
-
-Wait! Why the new test cases fail?
-
-
-![](pls-no.jpg)
-
-
-Variant alignment is all wrong
-
-🤦 😭
-
-Note: Turns out D-Bus is hard after all!
-
-
-D-Bus has a few strange rules
-
-
-#1 Alignment based on position in the whole message
-
-
-```rust
-trait VariantType {
-    ...
-
-    fn encode(&self) -> Vec<u8>;
-
-    ...
-}
-```
-
-
-#2 Variant's & contained value needs no alignment
-
-😯
-
-
-#3 But its grand-chilren do
-
-😠
-
-
-1-month later..
-
-
-Still haven't solved the problem
-
-
-Lifetimes must die!
-
-
-Efficiency is not a religion
-
-Note: No need to be more efficient than C
-
-
 Looking forward
-
-
-Separate Variant crate
 
 
 Receiving messages
