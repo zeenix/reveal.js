@@ -448,7 +448,7 @@ pub struct YourType {
 So..
 
 
-`VariantValue` trait bound
+Drop VariantValue trait bound
 
 
 Deserializer next
