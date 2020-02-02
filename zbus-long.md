@@ -1,10 +1,7 @@
-## `zbus`
+![](zbus-logo.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
 
-<br/><br/>
 Yet another D-Bus library
-
-<br/><br/>
-zeeshanak@gnome.org
 
 
 Who am I?
