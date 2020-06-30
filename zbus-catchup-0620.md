@@ -258,7 +258,7 @@ loop {
 ```
 
 
-D-Bus XML <-> Code
+XML ↔ Code
 
 
 Book
