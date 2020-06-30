@@ -267,6 +267,18 @@ Book
 https://zeenix.pages.freedesktop.org/zbus
 
 
+Documentation & polish
+
+
+🙌 1.0 🙌
+
+
+Post-1.0
+
+
+Async
+
+
 That's all folks
 
 <br/>
