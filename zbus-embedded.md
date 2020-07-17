@@ -101,30 +101,7 @@ aka GVariant
 Data types & encoding
 
 
-Natural alignment
-
-
-Signature
-
-
-Basic types
-
-<br/>
-u8, i16, f64, str, etc
-
-
-Containers
-
-
-Array, Structure, Dict
-
-<br/>
-and..
-
-
-Variant
-
-Note: Generic data
+Map nicely to Rust types
 
 
 High-level
