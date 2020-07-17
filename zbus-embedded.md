@@ -274,7 +274,7 @@ Pretty easy aleady
 But we can do better
 
 
-Hight-level API
+High-level API
 
 
 Client-side
