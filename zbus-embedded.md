@@ -1,5 +1,5 @@
 ![](zbus-logo.png)
-<!-- .element style="border: 0; background: None; box-shadow: None" width="400" -->
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 Fearless IPC for embedded Linux is finally here!
 
@@ -31,13 +31,14 @@ Background story
 
 Oxidizing Geoclue
 
-<br/>
-- Geolocation service
-- Written in C
-- D-Bus
+
+Geolocation D-Bus service
 
 
-D-Bus?? 🤔
+Written in C
+
+
+What's D-Bus?? 🤔
 
 
 Effecient binary IPC protocol
@@ -229,7 +230,10 @@ let t = ("hello", 42i32, true);
 let encoded = to_bytes(ctxt, &t)?;
 let decoded: (&str, i32, bool) = from_slice(&encoded, ctxt)?;
 assert_eq!(decoded, t);
+
+//
 ```
+
 
 Back to D-Bus
 
@@ -311,19 +315,20 @@ trait Notifications {
               hints: HashMap<&str, &Value>,
               expire_timeout: i32) -> zbus::Result<u32>;
 }
+
+//
 ```
 
 
 ```rust
-let connection = zbus::Connection::new_session()?;
-
 let proxy = NotificationsProxy::new(&connection)?;
 
 let _reply = proxy.notify(
 	"my-app",
 	0,
 	"dialog-information",
-	"A summary", "Some body",
+	"Hi!!",
+	"Yes, you! How are things?",
 	&[],
 	HashMap::new(),
 	5000,
@@ -344,9 +349,7 @@ impl Greeter {
 
 
 ```rust
-use zbus::{Connection, ObjectServer};
-
-let connection = Connection::new_session()?;
+use zbus::ObjectServer;
 
 let mut server = ObjectServer::new(&connection);
 server.at(&"/org/zbus/MyGreeter".try_into()?, Greeter);
