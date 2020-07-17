@@ -395,6 +395,8 @@ Many other fixes & improvements
 
 That's all folks
 
-<br/>
-<br/>
+
+![](zbus-logo.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
 https://gitlab.freedesktop.org/zeenix/zbus
