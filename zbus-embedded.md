@@ -339,6 +339,9 @@ loop {
 ```
 
 
+Still not easy enough?
+
+
 XML ↔ Code
 
 
@@ -366,7 +369,7 @@ Async
 GVariant
 
 
-& way too much of easy!
+Many other fixes & improvements
 
 
 That's all folks
