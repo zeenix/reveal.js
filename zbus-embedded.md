@@ -369,6 +369,18 @@ GVariant
 Async
 
 
+no_std?
+
+
+Maybe
+
+
+No alloc?
+
+
+Doubtful
+
+
 Many other fixes & improvements
 
 
