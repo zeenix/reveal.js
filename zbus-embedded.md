@@ -164,6 +164,15 @@ Cool, let's really do this!
 zbus!
 
 
+Goals
+
+
+Easy
+
+
+Efficient
+
+
 But first things first
 
 
