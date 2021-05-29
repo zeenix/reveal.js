@@ -384,7 +384,7 @@ $ zbus-xmlgen interface.xml
 
 Book<br/><br/>
 
-https://zeenix.pages.freedesktop.org/zbus
+https://dbus.pages.freedesktop.org/zbus/1.0/
 
 
 No asynchronous API? 🙄
