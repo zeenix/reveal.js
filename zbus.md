@@ -342,6 +342,54 @@ let _reply = proxy.notify(
 ```
 
 
+Signals and Properties
+
+
+```rust
+#[dbus_proxy(
+    default_service = "org.freedesktop.GeoClue2",
+    interface = "org.freedesktop.GeoClue2.Client"
+)]
+trait Client {
+    /// A property setter.
+    #[dbus_proxy(property)]
+    fn set_desktop_id(&mut self, id: &str) -> Result<()>;
+
+    /// A property getter.
+    #[dbus_proxy(property)]
+    fn desktop_id(&mut self) -> Result<String>;
+}
+```
+
+
+```rust
+    /// A signal.
+    #[dbus_proxy(signal)]
+    fn location_updated(
+        &self,
+        old: ObjectPath,
+        new: ObjectPath,
+    ) -> Result<()>;
+```
+
+
+```rust
+client.set_desktop_id("org.freedesktop.zbus").unwrap();
+
+client
+    .connect_location_updated(move |_old, new| {
+        println!("old location: {}", old);
+        println!("new location: {}", new);
+
+        Ok(())
+    })
+    .unwrap();
+
+// Wait till there is a signal that was handled.
+while client.next_signal().unwrap().is_some() {}
+```
+
+
 Server-side
 
 
