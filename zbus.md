@@ -446,10 +446,10 @@ No asynchronous API? 🙄
 ☑ Lowlevel
 
 
-```rust
-let mut connection = zbus::azync::Connection::new_session()?;
+```rust [1,9]
+let mut conn = zbus::azync::Connection::new_session()?;
 
-let reply = connection
+let reply = conn
 	.call_method(
 			Some("org.gnome.SettingsDaemon.Power"),
 			"/org/gnome/SettingsDaemon/Power",
@@ -466,7 +466,7 @@ println!("New level: {}%", percent);
 ☑ Client-side
 
 
-```rust
+```rust [1,12]
 let proxy = AsyncNotificationsProxy::new(&connection)?;
 
 let _reply = proxy.notify(
