@@ -268,7 +268,14 @@ Speed up
 Lots of disagreements
 
 
-All essential API in place
+🙌 1.0 🙌<br/><br/>
+
+
+Well-received
+
+
+![](zbus-alberto-tweet.jpg)
+<!-- .element class="r-stretch" style="border: 0; background: None; box-shadow: None" -->
 
 
 How does it look like?
