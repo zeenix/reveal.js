@@ -244,7 +244,7 @@ assert_eq!(decoded, t);
 Back to D-Bus
 
 
-Slow progress
+Slow progress at first
 
 
 More D-Bus crates 😮
