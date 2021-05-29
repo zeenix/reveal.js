@@ -446,4 +446,4 @@ That's all folks
 ![](zbus-logo.png)
 <!-- .element style="border: 0; background: None; box-shadow: None" -->
 
-https://gitlab.freedesktop.org/zeenix/zbus
+https://gitlab.freedesktop.org/dbus/zbus
