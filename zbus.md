@@ -1,7 +1,8 @@
-## `zbus`
+![](zbus-logo.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 <br/><br/>
-Yet another D-Bus library
+Why oh why? also how?
 
 <br/><br/>
 zeeshanak@gnome.org
@@ -12,15 +13,18 @@ Who am I?
 
 Zeeshan Ali
 
+<br/>
+🇵🇰 🇫🇮 🇬🇧 🇸🇪  🇩🇪
 
-![](redhat.png)
+
+![](lumeo.svg)
 <!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 
 FOSS
 
 
-# 🛨  🚁  🐈
+# 🛩 🚁 🐈
 
 
 Background story
@@ -29,14 +33,26 @@ Background story
 Geoclue
 
 
-Geolocation service
+Geolocation D-Bus service
+
+
+What's D-Bus?? 🤔
+
+
+Effecient binary IPC protocol
+
+
+Desktop & embedded
+
+
+systemd, GNOME & KDE etc
 
 
 Written in C
 
 
-Maintainer since Geoclue2
-
+![](rustweg.jpg)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
 
 Let's oxidize it!
 
@@ -53,25 +69,16 @@ Most sensitive data
 I <span style="color:red">❤️ </span> Rust
 
 
-Challenges
+How do you talk D-Bus?
 
 
-Meson
-
-
-D-Bus
-
-
-Effecient binary IPC protocol
-
-
-Desktop & embedded
+There must be a crate for it!
 
 
 dbus-rs
 
 
-libdbus
+libdbus 🙄
 
 
 Issues
@@ -116,30 +123,7 @@ aka GVariant
 Data types & encoding
 
 
-Natural alignment
-
-
-Signature
-
-
-Basic types
-
-<br/>
-u8, i16, f64, str, etc
-
-
-Containers
-
-
-Array, Structure, Dict
-
-<br/>
-and..
-
-
-Variant
-
-Note: Generic data
+Map nicely to Rust types
 
 
 High-level
@@ -196,235 +180,233 @@ Actually..really not too hard
 Note: assumptions
 
 
-After 3 days...
-
-
-Established a connection!
-
-
-Called a method
-
-
 Cool, let's really do this!
 
 
 zbus!
 
 
-GVariant
+Goals
 
 
-```rust
-trait VariantType: Sized {
-    const SIGNATURE: char;
-    const ALIGNMENT: u32;
-
-    fn encode(&self) -> Vec<u8>;
-
-    fn extract_slice(data: &[u8], signature: &str)
-        -> Result<&[u8], VariantError>;
-    fn decode(bytes: &[u8], signature: &str)
-        -> Result<Self, VariantError>;
-
-    fn signature(&self) -> Cow<str>;
-```
-Note: SIGNATURE & signature same for basic types
+Easy
 
 
-Basic types
-
-<br/>
-u8, i16, f64, str, etc
+Efficient
 
 
-Container types
+But first things first
 
 
-Arrays
-
-<br/>
-```rust
-impl<T: VariantType> VariantType for Vec<T> {
-...
-```
+zvariant
 
 
-Structures
-
-<br/>
-```rust
-pub struct Structure(Vec<Variant>);
-
-impl Structure {
-    pub fn new(fields: Vec<Variant>) -> Self;
-    pub fn fields(&self) -> &[Variant];
-    pub fn take_fields(self) -> Vec<Variant>;
-}
-
-impl VariantType for Structure {
-...
-```
+Spent several months
 
 
-```rust
-struct Variant {
-    signature: String,
-    // The actual value in encoded format
-    value: Cow<[u8]>,
-}
-```
-
-
-```rust
-let i: i16 = 42;
-let v = zbus::Variant::from(i);
-assert!(v.len() == 2);
-assert!(v.is::<i16>());
-assert!(v.get::<i16>().unwrap() == i);
-
-let v = zbus::Variant::from_data(
-    v.bytes(),
-    v.signature()
-).unwrap();
-assert!(v.len() == 2);
-assert!(v.get::<i16>().unwrap() == i);
-```
+Different approaches
 
 
 Fun with lifetimes
 
+
+And D-Bus spec itself
+
+
+zvariant 1.0
+
+
+❌ Empty Arrays ❌
+
+
+Why not serde?
+
+
+Another few months of fun
+
+
+zvariant 2.0
+
+
 ```rust
-trait VariantType<'a>: Sized {
-    const SIGNATURE: char;
-    const ALIGNMENT: u32;
+use zvariant::{from_slice, to_bytes, EncodingContext};
 
-    fn encode(&self) -> Vec<u8>;
+// All (de)serialization API needs a context.
+let ctxt = EncodingContext::<byteorder::LE>::new_dbus(0);
 
-    fn extract_slice<'b>(data: &'b [u8], signature: &str)
-        -> Result<&'b [u8], VariantError>;
-    fn decode(bytes: &'a [u8], signature: &str)
-        -> Result<Self, VariantError>;
+let t = ("hello", 42i32, true);
+let encoded = to_bytes(ctxt, &t)?;
+let decoded: (&str, i32, bool) = from_slice(&encoded, ctxt)?;
+assert_eq!(decoded, t);
 
-    fn signature<'b>(&'b self) -> Cow<'b, str> {
-        Cow::from(Self::SIGNATURE_STR)
-    }
+//
 ```
-
 
 Back to D-Bus
 
 
+Slow progress
+
+
+More D-Bus crates 😮
+
+
+Help me out?
+
+
+An old friend to the rescue
+
+
+![](zeenix-elmarco-enterprise.jpg)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
+Marc-André Lureau
+
+
+Speed up
+
+
+Lots of disagreements
+
+
+All essential API in place
+
+
+How does it look like?
+
+
 ```rust
-let mut conection = zbus::Connection::new_session().unwrap();
+let mut connection = zbus::Connection::new_session()?;
+
 let reply = connection
-    .call_method(
-        Some("org.freedesktop.DBus"),
-        "/org/freedesktop/DBus",
-        Some("org.freedesktop.DBus.Peer"),
-        "GetMachineId",
-        None,
-    )
-    .unwrap();
-let body = reply.body(Some(<&str>::SIGNATURE_STR)).unwrap();
-let v = body.get(0).unwrap();
-let id = v.get::<&str>().unwrap();
-println!("Machine ID: {}", id);
+	.call_method(
+			Some("org.gnome.SettingsDaemon.Power"),
+			"/org/gnome/SettingsDaemon/Power",
+			Some("org.gnome.SettingsDaemon.Power.Screen"),
+			"StepUp",
+			&(),
+	)?;
+ 
+let (percent, _)  = reply.body::<(u32, &str)>()?;
+println!("New level: {}%", percent);
 ```
 
 
-All done with Variants, right? RIGHT??
-
-Note: docs and ship
+Pretty easy aleady
 
 
-Wait! Why the new test cases fail?
+But we can do better
 
 
-![](pls-no.jpg)
+High-level API
 
 
-Variant alignment is all wrong
+Client-side
 
-🤦 😭
+```rust
+#[dbus_proxy]
+trait Notifications {
+    fn notify(&self,
+              app_name: &str,
+              replaces_id: u32,
+              app_icon: &str,
+              summary: &str,
+              body: &str,
+              actions: &[&str],
+              hints: HashMap<&str, &Value>,
+              expire_timeout: i32) -> zbus::Result<u32>;
+}
 
-Note: Turns out D-Bus is hard after all!
-
-
-D-Bus has a few strange rules
-
-
-#1 Alignment based on position in the whole message
+//
+```
 
 
 ```rust
-trait VariantType {
-    ...
+let proxy = NotificationsProxy::new(&connection)?;
 
-    fn encode(&self) -> Vec<u8>;
+let _reply = proxy.notify(
+	"my-app",
+	0,
+	"dialog-information",
+	"Hi!!",
+	"Yes, you! How are things?",
+	&[],
+	HashMap::new(),
+	5000,
+)?;
+```
 
-    ...
+
+Server-side
+
+```rust
+#[dbus_interface(name = "org.zbus.MyGreeter1")]
+impl Greeter {
+    fn say_hello(&self, name: &str) -> String {
+        format!("Hello {}!", name)
+    }
 }
 ```
 
 
-#2 Variant's & contained value needs no alignment
+```rust
+use zbus::ObjectServer;
 
-😯
+let mut server = ObjectServer::new(&connection);
+server.at(&"/org/zbus/MyGreeter".try_into()?, Greeter);
 
-
-#3 But its grand-chilren do
-
-😠
-
-
-1-month later..
-
-
-Still haven't solved the problem
+loop {
+	if let Err(err) = server.try_handle_next() {
+		eprintln!("{}", err);
+	}
+}
+```
 
 
-Lifetimes must die!
+Still not easy enough?
 
 
-Efficiency is not a religion
-
-Note: No need to be more efficient than C
-
-
-Looking forward
-
-
-Separate Variant crate
-
-
-Receiving messages
+```shell
+$ cargo install zbus_xmlgen
+$ zbus-xmlgen --system \
+    org.freedesktop.login1 \
+    /org/freedesktop/LogControl1
+$ zbus-xmlgen --session \
+    org.freedesktop.ScreenSaver \
+    /org/freedesktop/ScreenSaver
+$ zbus-xmlgen interface.xml
+```
 
 
-Signals
+Book<br/><br/>
+
+https://zeenix.pages.freedesktop.org/zbus
 
 
-Async
-
-Note: async-std
+No asynchronous API? 🙄
 
 
-High-level API
-<br/>
-<br/>
-Objects & Methods
+⚔ Async runtimes wars ⚔
 
 
-Code generation
+☑ Lowlevel
 
 
-Maybe also macros
+☑ Client-side
 
 
-& way too much of easy!
+Server-side: Coming soon..
+
+
+🙌 2.0 🙌<br/><br/>
+
+beta releases available
 
 
 That's all folks
 
-<br/>
-<br/>
+
+![](zbus-logo.png)
+<!-- .element style="border: 0; background: None; box-shadow: None" -->
+
 https://gitlab.freedesktop.org/zeenix/zbus
