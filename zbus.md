@@ -286,7 +286,7 @@ let reply = connection
 			"StepUp",
 			&(),
 	)?;
- 
+
 let (percent, _)  = reply.body::<(u32, &str)>()?;
 println!("New level: {}%", percent);
 ```
