@@ -309,6 +309,7 @@ High-level API
 
 Client-side
 
+
 ```rust
 #[dbus_proxy]
 trait Notifications {
@@ -342,6 +343,7 @@ let _reply = proxy.notify(
 
 
 Server-side
+
 
 ```rust
 #[dbus_interface(name = "org.zbus.MyGreeter1")]
