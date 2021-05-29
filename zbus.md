@@ -388,7 +388,40 @@ No asynchronous API? 🙄
 ☑ Lowlevel
 
 
+```rust
+let mut connection = zbus::azync::Connection::new_session()?;
+
+let reply = connection
+	.call_method(
+			Some("org.gnome.SettingsDaemon.Power"),
+			"/org/gnome/SettingsDaemon/Power",
+			Some("org.gnome.SettingsDaemon.Power.Screen"),
+			"StepUp",
+			&(),
+	).await?;
+
+let (percent, _)  = reply.body::<(u32, &str)>()?;
+println!("New level: {}%", percent);
+```
+
+
 ☑ Client-side
+
+
+```rust
+let proxy = AsyncNotificationsProxy::new(&connection)?;
+
+let _reply = proxy.notify(
+	"my-app",
+	0,
+	"dialog-information",
+	"Hi!!",
+	"Yes, you! How are things?",
+	&[],
+	HashMap::new(),
+	5000,
+).await?;
+```
 
 
 Server-side: Coming soon..
