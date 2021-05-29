@@ -238,8 +238,6 @@ let t = ("hello", 42i32, true);
 let encoded = to_bytes(ctxt, &t)?;
 let decoded: (&str, i32, bool) = from_slice(&encoded, ctxt)?;
 assert_eq!(decoded, t);
-
-//
 ```
 
 Back to D-Bus
@@ -316,8 +314,6 @@ trait Notifications {
               hints: HashMap<&str, &Value>,
               expire_timeout: i32) -> zbus::Result<u32>;
 }
-
-//
 ```
 
 
