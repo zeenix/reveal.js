@@ -240,6 +240,7 @@ let decoded: (&str, i32, bool) = from_slice(&encoded, ctxt)?;
 assert_eq!(decoded, t);
 ```
 
+
 Back to D-Bus
 
 
