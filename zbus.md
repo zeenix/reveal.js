@@ -482,6 +482,32 @@ let _reply = proxy.notify(
 ```
 
 
+Signals and Properties
+
+
+```rust [3,6,14]
+    client
+        .set_desktop_id("org.freedesktop.zbus")
+        .await?;
+    client
+        .connect_location_updated(move |old, new| {
+            async move {
+                println!("old location: {}", old);
+                println!("new location: {}", new);
+
+                Ok(())
+            }
+            .boxed()
+        })
+        .await?;
+```
+
+
+```rust
+    while client.next_signal().await?.is_some() {}
+```
+
+
 Server-side: Coming soon..
 
 
