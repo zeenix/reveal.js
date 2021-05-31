@@ -450,7 +450,7 @@ No asynchronous API? 🙄
 ☑ Lowlevel
 
 
-```rust [1,9]
+```rust [1,10]
 let mut conn = zbus::azync::Connection::new_session()?;
 
 let reply = conn
