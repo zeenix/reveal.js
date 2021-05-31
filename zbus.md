@@ -515,7 +515,36 @@ Signals and Properties
 Streams
 
 
-Server-side: Coming soon..
+```rust
+let mut stream = proxy
+    .receive_signal("LocationUpdated")
+    .await?;
+
+while let Some(msg) = stream.next().await {
+    let (old, new): (&str, &str) = msg.body()?;
+
+    println!("old location: {}", old);
+    println!("new location: {}", new);
+}
+```
+
+
+```rust [1, 3-4]
+let mut stream = proxy.receive_location_updated().await?;
+
+while let Some(signal) = stream.next().await {
+    let (old, new) = signal.view()?;
+
+    println!("old location: {}", old);
+    println!("new location: {}", new);
+}
+```
+
+
+Server-side async?
+
+
+Coming soon..
 
 
 🙌 2.0 🙌<br/><br/>
@@ -523,10 +552,7 @@ Server-side: Coming soon..
 beta releases available
 
 
-That's all folks
-
-
 ![](zbus-logo.png)
-<!-- .element style="border: 0; background: None; box-shadow: None" -->
-
-https://gitlab.freedesktop.org/dbus/zbus
+<!-- .element class="r-stretch" style="border: 0; background: None; box-shadow: None" -->
+https://gitlab.freedesktop.org/dbus/zbus<br/>
+Twitter: @zbus_crate
